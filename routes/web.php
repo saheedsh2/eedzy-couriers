@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\Sprovider\SproviderDashboardComponent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,12 +24,24 @@ use App\Http\Livewire\HomeComponent;
 Route::get('/', HomeComponent::class)->name('home');
 
 
+// For Customer
+
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+    'auth:sanctum', 'verified'])->group(function() {
+        Route::get('/customer/dashboard', CustomerDashboardComponent::class)->name('customer.dashboard');
+    });
+
+
+// For Service Provider
+
+Route::middleware([
+    'auth:sanctum', 'verified', 'authsprovider'])->group(function() {
+        Route::get('/sprovider/dashboard', SproviderDashboardComponent::class)->name('sprovider.dashboard');
+    });
+
+
+    // For Admin
+    Route::middleware([
+    'auth:sanctum', 'verified', 'authadmin'])->group(function() {
+        Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    });

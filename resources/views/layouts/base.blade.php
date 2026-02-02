@@ -35,14 +35,14 @@
                             <li class="text-left"><a href="tel:+911234567890"><i class="fa fa-phone"></i>
                                     +91-1234567890</a></li>
                             <li class="text-right"><a href="index.php/changelocation.html"><i
-                                        class="fa fa-map-marker"></i> Faridabad, Haryana</a></li>
+                                        class="fa fa-map-marker"></i> Saheed, Shittu</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="visible-md visible-lg text-right">
                             <li><i class="fa fa-comment"></i> Live Chat</li>
-                            <li><a href="index.php/changelocation.html"><i class="fa fa-map-marker"></i> Faridabad,
-                                    Haryana</a></li>
+                            <li><a href="index.php/changelocation.html"><i class="fa fa-map-marker"></i> Saheed,
+                                    Shittu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -125,27 +125,27 @@
                             @if(Auth::user()->utype==='ADM')
                                  <li class="login-form"> <a href="{{ route('register') }}" title="Register">My Account(Admin)</a>
                                     <ul class="drop-down one-column hover-fade">
-                                            <li><a href="#">Dashboard</a></li>
+                                            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
                             @elseif(Auth::user()->utype==='SVP')
                                    <li class="login-form"> <a href="{{ route('register') }}" title="Register">My Account(Serv. Provider)</a>
                                     <ul class="drop-down one-column hover-fade">
-                                            <li><a href="#">Dashboard</a></li>
+                                            <li><a href="{{ route('sprovider.dashboard') }}">Dashboard</a></li>
                                              <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
                             @else 
                                    <li class="login-form"> <a href="{{ route('register') }}" title="Register">My Account(Customer)</a>
                                     <ul class="drop-down one-column hover-fade">
-                                            <li><a href="#">Dashboard</a></li>
+                                            <li><a href="{{ route('customer.dashboard') }}">Dashboard</a></li>
                                              <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     </ul>
                                 </li>
                             @endif
 
-                            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none">
                                 @csrf
                             </form>
 
